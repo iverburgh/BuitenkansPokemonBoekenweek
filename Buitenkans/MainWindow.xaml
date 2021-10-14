@@ -1,0 +1,35 @@
+﻿<Window x:Class="Buitenkans.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Buitenkans"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowState="Maximized" WindowStyle="None"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <DockPanel>
+        <Button DockPanel.Dock="Top" Name="MenuKnop" Content="Menu" FontSize="40" Visibility="Collapsed" Click="MenuKnop_Click"  />
+        <Button DockPanel.Dock="Top" Name="StartKnop" Content="Start game" FontSize="40" Foreground="#FFC3463C" Background="#FF6BC33C" Click="StartKnop_Click"/>
+        <ListBox DockPanel.Dock="Right" Name="GevangenPokemonListBox" ItemsSource="{Binding Path=GevangenPokemonLijst}" Visibility="Hidden" Width="200">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=Naam}" FontSize="24"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Canvas Name="GameCanvas">
+            <Button Name="PokemonButton" Click="PokemonButton_OnClick" Visibility="Hidden">
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                        <TextBlock Name="PokemonNaam" FontSize="20" />
+                        <TextBlock Name="HP" FontSize="20" HorizontalAlignment="Right" />
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+                        <TextBlock FontSize="40">Vang mij!</TextBlock>
+                    </DockPanel>
+                    <Image Name="PokemonImage" />
+                </DockPanel>
+            </Button>
+        </Canvas>
+    </DockPanel>
+</Window>
